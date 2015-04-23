@@ -1,0 +1,45 @@
+# Running the mininet topology and OpenFlow POX controller
+ Author(s) Akhilesh Thyagaturu
+          Rajesh Jalisatgi      
+          Graduate Students at Arizona State University      
+
+                                      TS1(h2)
+                                     /          \
+                                    /            \
+                                   /              \
+   Source(h1) ------>OF Switch                Aggregator
+                                   \            / 
+                                    \          /
+                                     \        /
+                                      TS2(h3)
+ 
+ Deliverables
+	In ~/pox/ext folder
+	 	* LoadBalancer.py
+	 	* DataAgg.py
+	 	* PlotQueue.py
+	In ~/mininet/custom 
+	 	* Topo_LoadBalanc.py
+	 	* netinfo_h2.py
+	 	* netinfo_h3.py
+	 	* 
+	 
+1. Create the topology
+	Run following command from mininet folder to create topology
+	command>>	sudo python Topo_LoadBalance.py
+	
+	Run netinfo_h2.py in h2
+		netinfo_h3.py in h3
+	command>> sudo python <file_name>
+	
+2. Run the LoadBalancer.py on controller from pox controller folder
+	command>>./pox.py --verbose LoadBalancer
+	
+3. Run the iperf command
+	from h1 window run the client and in h4 window run the server
+	In h4 window
+	command>> iperf -s
+	In h1 window (starting 6 client threads)
+	command>> iperf -c 192.168.1.6 -t 150 -P 6  
+	
+	 	 			
